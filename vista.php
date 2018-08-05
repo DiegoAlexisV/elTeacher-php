@@ -29,6 +29,13 @@
 				<input type="text" name="apellido" placeholder="Apellido......">
 				<input type="submit" name="enviadocente" value="Registrar Docente">
 			</form>
+			<h3>añadir materia</h3>
+			<form action="anadir_materia.php" method="post">
+				<input type="text" name="sigla" placeholder="sigla......">
+				<input type="text" name="iddoc" placeholder="id del docente...">
+				<input type="text" name="nombremat" placeholder="nombre de la materia">
+				<input type="submit" value="Registrar Materia">
+			</form>
 	<?php 		
 		}
 	?>
