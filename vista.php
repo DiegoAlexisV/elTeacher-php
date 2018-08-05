@@ -36,6 +36,11 @@
 				<input type="text" name="nombremat" placeholder="nombre de la materia">
 				<input type="submit" value="Registrar Materia">
 			</form>
+			<h3>añadir material</h3>
+			<form action="anadir_descripcion.php" method="post">
+				<input type="text" name="descri" placeholder="escriba una descripcion">
+				<input type="submit" value="Registrar Descripcion">
+			</form>
 	<?php 		
 		}
 	?>
