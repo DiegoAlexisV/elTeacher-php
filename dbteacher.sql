@@ -1,3 +1,5 @@
+
+
 CREATE TABLE USUARIO ( idu int AUTO_INCREMENT, 
 						nick varchar(50),
 						sexo varchar(3),
@@ -12,9 +14,12 @@ CREATE TABLE CUENTA (idcuenta int AUTO_INCREMENT,
 					 FOREIGN KEY(idu) REFERENCES USUARIO(idu)
 					 );
 CREATE TABLE DOCENTE ( iddoc int AUTO_INCREMENT,
+						idu int,
+						grado varchar(10),
 						nombre varchar(20),
 						apellido varchar(30),
-						PRIMARY KEY(iddoc)
+						PRIMARY KEY(iddoc),
+						FOREIGN KEY(idu) REFERENCES USUARIO(idu)
 					 );
 
 CREATE TABLE MATERIA(   sigla varchar(10),
@@ -27,7 +32,7 @@ CREATE TABLE MATERIA(   sigla varchar(10),
 						);
 CREATE TABLE DESCRIPCION(iddesc int AUTO_INCREMENT,
 						descri TEXT,
-						PRIMARY KEY(iddesc),
+						PRIMARY KEY(iddesc)
 						);
 --entidad debil (sin clave primaria)
 CREATE TABLE MATERIAL(	idm int AUTO_INCREMENT,
@@ -44,7 +49,7 @@ CREATE TABLE MATERIAL(	idm int AUTO_INCREMENT,
 CREATE TABLE LIBRO (	idm int,
 						titulo TEXT,
 						autor TEXT,
-						PRIMARY KEY(idm),
+						PRIMARY KEY(idm)
 					);
 CREATE TABLE APUNTE(	idm int,
 						PRIMARY KEY(idm)

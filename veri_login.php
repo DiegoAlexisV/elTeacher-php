@@ -13,7 +13,7 @@
 		//$checkvisit=$_POST["checkvisita"];
 		$base = new PDO("mysql:host=localhost; dbname=dbteacher", "root", "");
 		$base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-		$sql ="SELECT * FROM CUENTA WHERE nombrec= :cuenta AND password= :contrasenia";
+		$sql ="SELECT c.idcuenta,u.idu,c.nombrec FROM CUENTA c, USUARIO u WHERE c.nombrec= :cuenta AND c.passwor=:contrasenia AND c.idu=u.idu";
 		$resultado = $base->prepare($sql);
 		$cuenta = htmlentities(addslashes($_POST["cuenta"]));
 		$contrasenia = htmlentities(addslashes($_POST["contrasenia"]));
@@ -25,12 +25,18 @@
 		if(isset($_POST["checkvisita"]))// pregunta si es que el checkbox esta encendido 
 		{
 			//echo "estas como visitante we";
+			session_start();
+			session_destroy();
 			header("location:vista.php");
 		}else{
 			if($numero_registro!=0){
 				//echo  $checkvisit ;
 				session_start();
-				$_SESSION["usuario"]=$_POST["cuenta"];
+				$registro=$resultado->fetch(PDO::FETCH_ASSOC);
+				//echo $registro["nombrec"];
+				$_SESSION["idusuario"]=$registro["idu"];
+				$resultado->closeCursor();
+				
 				header("location:vista.php");
 			}else{
 				header("location:index.php");
