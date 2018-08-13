@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
-</head>
-<h1>hola</h1>
-<body>
+<?php
+    session_start();
+?>
 	<?php
 	try {
+	    
 		//$checkvisit=$_POST["checkvisita"];
-		$base = new PDO("mysql:host=localhost; dbname=dbteacher", "root", "");
+		include('conexion.php');
+		$base = new PDO("mysql:host=$host; dbname=$db_nombre",$usuario,$password);
 		$base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-		$sql ="SELECT c.idcuenta,u.idu,c.nombrec FROM CUENTA c, USUARIO u WHERE c.nombrec= :cuenta AND c.passwor=:contrasenia AND c.idu=u.idu";
+		$sql ="SELECT c.idcuenta,u.idu,c.nombrec FROM cuenta c, usuario u WHERE c.nombrec= :cuenta AND c.passwor=:contrasenia AND c.idu=u.idu";
 		$resultado = $base->prepare($sql);
 		$cuenta = htmlentities(addslashes($_POST["cuenta"]));
 		$contrasenia = htmlentities(addslashes($_POST["contrasenia"]));
@@ -25,26 +20,30 @@
 		if(isset($_POST["checkvisita"]))// pregunta si es que el checkbox esta encendido 
 		{
 			//echo "estas como visitante we";
-			session_start();
+			
 			session_destroy();
-			header("location:vista.php");
+			?>
+			<script type="text/javascript">window.location="vista.php"</script>
+			<?php
 		}else{
 			if($numero_registro!=0){
 				//echo  $checkvisit ;
-				session_start();
 				$registro=$resultado->fetch(PDO::FETCH_ASSOC);
 				//echo $registro["nombrec"];
 				$_SESSION["idusuario"]=$registro["idu"];
 				$resultado->closeCursor();
-				
-				header("location:vista.php");
+				?>
+			    <script type="text/javascript">window.location="vista.php"</script>
+			    <?php
 			}else{
-				header("location:index.php");
+				?>
+			    <script type="text/javascript">window.location="index.php"</script>
+			    <?php
 			}
 		}
 	} catch (Exception $e) {
 		die("Error: " . $e->getMessage());
 	}
 	?>
-</body>
-</html>
+	
+

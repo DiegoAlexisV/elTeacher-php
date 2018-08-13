@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<?php
+    session_start();
+?>
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-	<link rel="stylesheet" href="">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/stylepag.css">
 </head>
 <body>
-
-
 	<?php
-		session_start();
 		if(!isset($_SESSION["idusuario"])){
 	?>
 			<h1>USTED ESTA SOLO DE VISITA</h1>
@@ -41,9 +41,42 @@
 				<input type="text" name="descri" placeholder="escriba una descripcion">
 				<input type="submit" value="Registrar Descripcion">
 			</form>
+
+			<h3>añadir material</h3>
+			<!--este enctype es para que se pueda trabajar el formulario con la base de datos-->
+			<form action="anadir_material.php" enctype="multipart/form-data" method="post">
+				<input type="text" name="sigla" placeholder="sigla de la materia">
+				<input type="text" name="iddesc" placeholder="id de descripcion">
+				<input type="file" name="archivo">
+				<input type="text" name="extencion" placeholder="extencion del archivo">
+				<input type="submit" value="Registrar Material">
+			</form>
 	<?php 		
 		}
 	?>
+	<div class="container" >
+		<section class="main row">
+			<div class="col-xs-6">
+				<h4>SERVIDOR</h2>
+			<?php
+				include('consulta_archivos_servidor.php'); 
+			 ?>
+			</div>
+			<div class="col-xs-6">
+				<h4>BASE DE DATOS</h4>
+			<?php
+				//include('consulta_archivos_bd.php'); 
+			 ?>	
+			</div>	
+		</section>
+		
+	</div>
 <h1>hola</h1>	
+
+
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/objetos.js"></script>
 </body>
 </html>

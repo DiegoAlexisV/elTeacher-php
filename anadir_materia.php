@@ -1,5 +1,6 @@
 <?php 
-	$base=new PDO("mysql:host=localhost; dbname=dbteacher","root","");
+	include('conexion.php');
+	$base = new PDO("mysql:host=$host; dbname=$db_nombre",$usuario,$password);
 	$base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 

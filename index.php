@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -7,6 +6,10 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/stylepag.css">
 
+
+	
+</head>
+<body>
 
 	<center>
 	<h1>EL TEACHER</h1>
@@ -24,8 +27,5 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/objetos.js"></script>
-</head>
-<body>
-
 </body>
 </html>
