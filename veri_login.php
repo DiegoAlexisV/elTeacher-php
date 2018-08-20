@@ -23,7 +23,7 @@
 			
 			session_destroy();
 			?>
-			<script type="text/javascript">window.location="vista.php"</script>
+			<script type="text/javascript">window.location="index.php"</script>
 			<?php
 		}else{
 			if($numero_registro!=0){
@@ -33,11 +33,11 @@
 				$_SESSION["idusuario"]=$registro["idu"];
 				$resultado->closeCursor();
 				?>
-			    <script type="text/javascript">window.location="vista.php"</script>
+			    <script type="text/javascript">window.location="index.php"</script>
 			    <?php
 			}else{
 				?>
-			    <script type="text/javascript">window.location="index.php"</script>
+			    <script type="text/javascript">window.location="login.php"</script>
 			    <?php
 			}
 		}

@@ -1,5 +1,5 @@
 <?php 
 	session_start();
 	session_destroy();
-	header("location:vista.php");
+	header("location:index.php");
  ?>

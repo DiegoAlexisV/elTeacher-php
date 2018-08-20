@@ -11,9 +11,9 @@
 <body>
 
 	<div>
-		<div class="list-group" id="myList" role="tablist">
+		<div class="container">
 			<?php include('consulta_lista_docentes.php');  ?>
-
+		</div>
 		<div class="tab-content">
 		  <div class="tab-pane active" id="home" role="tabpanel"></div>
 		</div>
